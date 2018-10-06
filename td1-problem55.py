@@ -1,47 +1,29 @@
 
-    
-def solve(n):
-    l_count = 0
-    for i in range(10000):
-        
-        if iter(i):
-            l_count+=1
-    return l_count
-        
-    
-    
-    
-def iter(n):
-    count = 0
-    while not isPalindrom(n) and count<50:
-        count+=1
-        
-        n = n + reverse(n)
-        
-    if isPalindrom(n):
-        return False
-    
-    return True
-
-
 def reverse(n):
-    
-    rev = 0
-    
-    while n!=0:
-        rev*=10
-        rev+= n%10
-        n//=10
-    
-    return rev
+	rev = 0
 
+	while n!=0:
+		rev*=10
+		rev+= n%10
+		n//=10
 
+	return rev
 
-def isPalindrom(n):
-    
-    if n == reverse(n):
-        return True
-    
-    return False
+def isLychrel(n):
+	
+	for i in range(50):
+		n+= reverse(n)
+		if(reverse(n)==n):
+			return False
+	return True
 
-print(solve(10000))
+def solve():
+
+	l_count = 0
+	for i in range(0, 10**4):
+		if isLychrel(i):
+			l_count +=1
+
+	return l_count
+
+print(solve())
